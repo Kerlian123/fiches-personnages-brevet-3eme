@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adolf Hitler — Révisions Brevet 3e</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:    #1a1610;
+      --paper:  #f5f0e8;
+      --sepia:  #c8b89a;
+      --gold:   #b8922a;
+      --rust:   #8b3a2f;
+      --muted:  #7a6e60;
+      --bg:     #faf7f2;
+      --border: #d6cfc4;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--ink);
+      padding: 0.75rem 1.5rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      text-decoration: none;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      background: var(--ink);
+      color: var(--paper);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      min-height: 260px;
+    }
+    @media (max-width: 580px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+
+    .hero-photo {
+      width: 220px;
+      background: #2a2520;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    @media (max-width: 580px) {
+      .hero-photo { width: 100%; height: 180px; }
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: sepia(15%) contrast(1.05);
+    }
+
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .hero-photo-placeholder .initiales {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    .hero-photo-placeholder .ph-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--sepia);
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    .hero-info {
+      padding: 2rem 2rem 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .hero-info h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .hero-dates {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--sepia);
+      margin-bottom: 0.75rem;
+    }
+    .hero-fonction {
+      font-size: 0.9rem;
+      color: var(--sepia);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .hero-nationalite {
+      margin-top: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #6a6055;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* BODY */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: #3a3228;
+      margin-bottom: 0.75rem;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* MOTS CLÉS */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      background: var(--bg);
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+    }
+    .back-btn:hover { color: var(--rust); border-color: var(--rust); }
+
+    /* DIVIDER */
+    hr.deco {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/fiches-personnages-brevet-3eme/index.html">← Retour à la liste</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-photo">
+    <div class="hero-photo-placeholder">
+      <span class="initiales">AH</span>
+      <span class="ph-label">photo à venir</span>
+    </div>
+  </div>
+  <div class="hero-info">
+    <p class="hero-eyebrow">Seconde Guerre mondiale</p>
+    <h1>Adolf Hitler</h1>
+    <p class="hero-dates">1889 – 1945</p>
+    <p class="hero-fonction">Dictateur, chef du parti nazi, Führer de l'Allemagne</p>
+    <p class="hero-nationalite">Autrichien / Allemand</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <p class="section-label">Biographie</p>
+    <p>Né en Autriche, Adolf Hitler est un ancien caporal de la Première Guerre mondiale. Il entre en politique en Allemagne après la guerre, profitant de l'humiliation nationale et de la crise économique des années 1930 pour porter le Parti national-socialiste (nazi) au pouvoir.</p>
+  </div>
+
+  <hr class="deco" />
+
+  <div class="section">
+    <p class="section-label">Rôle historique</p>
+    <p>Nommé chancelier en <strong>janvier 1933</strong>, Hitler instaure rapidement une dictature totalitaire. Il persécute les Juifs, les opposants politiques et les minorités (lois de Nuremberg, Nuit de Cristal). Sa politique expansionniste — réarmement de l'Allemagne, annexion de l'Autriche et des Sudètes — conduit au déclenchement de la <strong>Seconde Guerre mondiale le 1<sup>er</sup> septembre 1939</strong> avec l'invasion de la Pologne.<br><br>Il est le principal responsable de la <strong>Shoah</strong> : l'extermination systématique de six millions de Juifs d'Europe. Après la défaite militaire de l'Allemagne, il se suicide dans son bunker de Berlin le 30 avril 1945.</p>
+  </div>
+
+  <hr class="deco" />
+
+  <div class="section">
+    <p class="section-label">Mots-clés à retenir</p>
+    <div class="tags">
+      <span class="tag">Nazisme</span>
+      <span class="tag">Totalitarisme</span>
+      <span class="tag">Shoah</span>
+      <span class="tag">Seconde Guerre mondiale</span>
+      <span class="tag">IIIe Reich</span>
+    </div>
+  </div>
+
+  <a class="back-btn" href="/fiches-personnages-brevet-3eme/index.html">← Tous les personnages</a>
+</div>
+
+<footer>Révisions Brevet — 3e &nbsp;·&nbsp; Histoire-Géographie</footer>
+
+</body>
+</html>
